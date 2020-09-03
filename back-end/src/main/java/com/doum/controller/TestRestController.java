@@ -11,11 +11,11 @@ import com.doum.service.TestService;
 @RequestMapping("/api/test")
 public class TestRestController {
 
-	@Autowired
-	private TestService service;
+  @Autowired
+  private TestService service;
 
-	@RequestMapping(value = "/get", method = RequestMethod.GET)
-	public Object testGet() {
-		return service.selectData();
-	}
+  @RequestMapping(value = "/get", method = RequestMethod.GET)
+  public Object testGet() {
+    return service.selectData();
+  }
 }

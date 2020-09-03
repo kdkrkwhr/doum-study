@@ -9,10 +9,10 @@ import com.doum.model.TestDto;
 @Service
 public class TestService {
 
-	@Autowired
-	private TestMapper mapper;
+  @Autowired
+  private TestMapper mapper;
 
-	public TestDto selectData() {
-		return mapper.selectData();
-	}
+  public TestDto selectData() {
+    return mapper.selectData();
+  }
 }

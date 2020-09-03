@@ -7,6 +7,6 @@ import lombok.Setter;
 @Setter
 public class TestDto {
 
-	private String test;
+  private String test;
 
 }

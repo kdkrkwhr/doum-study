@@ -7,5 +7,6 @@ import com.doum.model.TestDto;
 @Mapper
 public interface TestMapper {
 
-	TestDto selectData();
+  TestDto selectData();
+
 }

@@ -20,34 +20,38 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 @MapperScan(value = "com.doum.mapper.*", sqlSessionFactoryRef = "sqlSessionFactory")
 public class DataBaseConfig {
 
-	@Primary
-	@Bean(name = "dataSource")
-	@ConfigurationProperties(prefix = "spring.datasource")
-	public DataSource dataSource() {
-		return DataSourceBuilder.create().build();
-	}
+  @Primary
+  @Bean(name = "dataSource")
+  @ConfigurationProperties(prefix = "spring.datasource")
+  public DataSource dataSource() {
+    return DataSourceBuilder.create().build();
+  }
 
-	@Primary
-	@Bean(name = "sqlSessionFactory")
-	public SqlSessionFactory sqlSessionFactoryBean(@Autowired @Qualifier("dataSource") DataSource dataSource,
-			ApplicationContext applicationContext) throws Exception {
-		SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
-		factoryBean.setDataSource(dataSource);
-		factoryBean.setConfigLocation(applicationContext.getResource("classpath:mybatis/mybatis-config.xml"));
-		factoryBean.setMapperLocations(applicationContext.getResources("classpath:mybatis/mapper/*.xml"));
-		return factoryBean.getObject();
-	}
+  @Primary
+  @Bean(name = "sqlSessionFactory")
+  public SqlSessionFactory sqlSessionFactoryBean(
+      @Autowired @Qualifier("dataSource") DataSource dataSource,
+      ApplicationContext applicationContext) throws Exception {
+    SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
+    factoryBean.setDataSource(dataSource);
+    factoryBean
+        .setConfigLocation(applicationContext.getResource("classpath:mybatis/mybatis-config.xml"));
+    factoryBean
+        .setMapperLocations(applicationContext.getResources("classpath:mybatis/mapper/*.xml"));
+    return factoryBean.getObject();
+  }
 
-	@Primary
-	@Bean(name = "sqlSession")
-	public SqlSessionTemplate sqlSession(
-			@Autowired @Qualifier("sqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
-		return new SqlSessionTemplate(sqlSessionFactory);
-	}
+  @Primary
+  @Bean(name = "sqlSession")
+  public SqlSessionTemplate sqlSession(
+      @Autowired @Qualifier("sqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
+    return new SqlSessionTemplate(sqlSessionFactory);
+  }
 
-	@Primary
-	@Bean(name = "transactionManager")
-	public DataSourceTransactionManager transactionManager(@Autowired @Qualifier("dataSource") DataSource dataSource) {
-		return new DataSourceTransactionManager(dataSource);
-	}
+  @Primary
+  @Bean(name = "transactionManager")
+  public DataSourceTransactionManager transactionManager(
+      @Autowired @Qualifier("dataSource") DataSource dataSource) {
+    return new DataSourceTransactionManager(dataSource);
+  }
 }
