@@ -30,6 +30,8 @@ import NucleoIcons from "views/NucleoIcons.js";
 import LoginPage from "views/examples/LoginPage.js";
 import LandingPage from "views/examples/LandingPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
+import TestProps from "views/examples/ProfilePage.js";
+import StudyIndex from "views/doum/Index.js";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -54,8 +56,12 @@ ReactDOM.render(
           path="/login-page"
           render={(props) => <LoginPage {...props} />}
         />
-        <Redirect to="/index" />
-        <Redirect from="/" to="/index" />
+        <Route
+          path="/study/main"
+          render={(props) => <StudyIndex {...props} />}
+        />
+        <Redirect to="/study/main" />
+        <Redirect from="/" to="/study/main" />
       </Switch>
     </Switch>
   </BrowserRouter>,
