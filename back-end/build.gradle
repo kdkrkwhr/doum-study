@@ -23,6 +23,7 @@ dependencies {
 	implementation "org.liquibase:liquibase-core:3.10.1", {
     	exclude group: "ch.qos.logback", module: "logback-classic"
     }
+    implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4:1.16'
   	// compile('org.springframework.boot:spring-boot-starter-security')
   	// compile('org.springframework.security.oauth:spring-security-oauth2')
     implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4:1.16'
