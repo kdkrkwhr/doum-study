@@ -1,10 +1,9 @@
-package com.doum.service;
+package com.doum.study.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.doum.mapper.TestMapper;
-import com.doum.model.TestDto;
+import com.doum.study.mapper.TestMapper;
+import com.doum.study.model.TestDto;
 
 @Service
 public class TestService {

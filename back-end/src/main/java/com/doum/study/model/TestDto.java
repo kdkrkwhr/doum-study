@@ -1,4 +1,4 @@
-package com.doum.model;
+package com.doum.study.model;
 
 import lombok.Getter;
 import lombok.Setter;
