@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.doum.mapper.TestMapper">
+<mapper namespace="com.doum.study.mapper.TestMapper">
 	<select id="selectData" resultType="TestDto">
-		SELECT "MySQL Connect TEST" AS test
+		SELECT 
+			TT.idx,
+			TT.test 
+		FROM 
+			TB_TEST AS TT
 	</select>
 </mapper>

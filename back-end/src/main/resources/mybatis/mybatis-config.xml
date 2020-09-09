@@ -9,6 +9,6 @@
         <setting name="mapUnderscoreToCamelCase" value="true" />
     </settings>
     <typeAliases>
-        <package name="com.doum.model"/>
+        <package name="com.doum.study.model"/>
     </typeAliases>
 </configuration>

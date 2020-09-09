@@ -7,6 +7,7 @@ import lombok.Setter;
 @Setter
 public class TestDto {
 
+  private int idx;
   private String test;
 
 }

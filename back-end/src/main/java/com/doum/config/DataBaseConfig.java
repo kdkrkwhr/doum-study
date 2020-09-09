@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 @Configuration
-@MapperScan(value = "com.doum.mapper.*", sqlSessionFactoryRef = "sqlSessionFactory")
+@MapperScan(value = "com.doum.study.mapper.*", sqlSessionFactoryRef = "sqlSessionFactory")
 public class DataBaseConfig {
 
   @Primary
