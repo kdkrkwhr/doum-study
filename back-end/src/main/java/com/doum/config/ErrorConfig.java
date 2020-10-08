@@ -13,8 +13,11 @@ public class ErrorConfig {
   @Bean
   public ConfigurableServletWebServerFactory webServerFactory() {
     TomcatServletWebServerFactory factory = new TomcatServletWebServerFactory();
-    factory.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND, "/error/404"));
-    factory.addErrorPages(new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/error/500"));
+    factory.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND, "/error/NOT_FOUND"));
+
+    for (HttpStatus ht : HttpStatus.values())
+      factory.addErrorPages(new ErrorPage(ht, "/api/error/" + ht.name()));
+
     return factory;
   }
 }
