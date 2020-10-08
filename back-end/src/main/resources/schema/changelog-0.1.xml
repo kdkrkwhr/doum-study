@@ -5,22 +5,107 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
-	<changeSet author="kdk" id="changelog-0.1">
-		<sql>
-			CREATE TABLE `tb_test` (
-			  `idx` int NOT NULL AUTO_INCREMENT,
-			  `test` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-			  PRIMARY KEY (`idx`)
-			) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
-		</sql>
-	</changeSet>
+	<changeSet author="kdk" id="table-init-0.1">
 
-	<changeSet author="kdk" id="changelog-0.2">
-		<sql>
-			INSERT INTO TB_TEST(test) VALUES("test01");
-			INSERT INTO TB_TEST(test) VALUES("test02");
-			INSERT INTO TB_TEST(test) VALUES("test03");
-		</sql>
+		<createTable tableName="DS_MEMBER">
+			<column name="idx" autoIncrement="true" type="INT">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="tag_idx" type="int">
+				<constraints nullable="false" />
+			</column>
+			<column name="member_id" type="VARCHAR(30)">
+				<constraints nullable="false" />
+			</column>
+			<column name="member_pw" type="VARCHAR(60)">
+				<constraints nullable="false" />
+			</column>
+			<column name="member_name" type="VARCHAR(30)">
+				<constraints nullable="false" />
+			</column>
+			<column name="member_phone" type="VARCHAR(30)">
+				<constraints nullable="false" />
+			</column>
+			<column name="member_email" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="member_create_dt" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+				<constraints nullable="false" />
+			</column>
+			<column name="use_yn" type="VARCHAR(1)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+		<createTable tableName="DS_BOARD">
+			<column name="idx" autoIncrement="true" type="INT">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="board_member_idx" type="int">
+				<constraints nullable="false" />
+			</column>
+			<column name="tag_idx" type="int">
+				<constraints nullable="false" />
+			</column>
+			<column name="board_subject" type="VARCHAR(30)">
+				<constraints nullable="false" />
+			</column>
+			<column name="board_content" type="VARCHAR(60)">
+				<constraints nullable="false" />
+			</column>
+			<column name="board_type" type="VARCHAR(30)">
+				<constraints nullable="false" />
+			</column>
+			<column name="board_create_dt" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP">
+				<constraints nullable="false" />
+			</column>
+			<column name="use_yn" type="VARCHAR(1)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+		<createTable tableName="DS_BOARD_STUDY">
+			<column name="idx" autoIncrement="true" type="INT">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="board_idx" type="int">
+				<constraints nullable="false" />
+			</column>
+			<column name="location" type="VARCHAR(30)">
+				<constraints nullable="false" />
+			</column>
+			<column name="recruit_cnt" type="int">
+				<constraints nullable="false" />
+			</column>
+			<column name="deadline" type="VARCHAR(8)">
+				<constraints nullable="false" />
+			</column>
+			<column name="communication" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+		<createTable tableName="DS_INTEREST_TAG">
+			<column name="idx" autoIncrement="true" type="INT">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="tag_name" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+		<createTable tableName="DS_APPLICATION">
+			<column name="board_idx" type="INT">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="member_idx" type="INT">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="event_type" type="VARCHAR(10)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
 	</changeSet>
 
 </databaseChangeLog>
