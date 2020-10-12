@@ -7,6 +7,15 @@
 
 	<changeSet author="kdk" id="table-init-0.1">
 
+		<createTable tableName="TB_TEST">
+			<column name="idx" autoIncrement="true" type="INT">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="test" type="VARCHAR(30)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
 		<createTable tableName="DS_MEMBER">
 			<column name="idx" autoIncrement="true" type="INT">
 				<constraints primaryKey="true" />
